@@ -8,12 +8,20 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+    <script src="https://unpkg.com/phosphor-icons"></script>
   </head>
 
-  <body>
+  <body class="bg-black text-neutral-100">
+    <%= render "shared/header" %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    
+    <main class="w-11/12 md:w-3/4 mx-auto min-h-screen">
+      <%= yield %>
+    </main>
 
-    <%= yield %>
+    <%= render "shared/footer" %>
   </body>
 </html>
