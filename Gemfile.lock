@@ -145,6 +145,8 @@ GEM
     http_parser.rb (0.8.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    inertia_rails (3.0.0)
+      rails (>= 5)
     jaro_winkler (1.5.4)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -307,6 +309,7 @@ DEPENDENCIES
   devise
   error_highlight (>= 0.4.0)
   guard-livereload
+  inertia_rails
   jbuilder
   jsbundling-rails
   pg (~> 1.1)

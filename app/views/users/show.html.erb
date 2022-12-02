@@ -1,0 +1,22 @@
+<section class="flex">
+  <aside class="w-full xl:w-2/6 p-4 md:p-0">
+    <div class="flex items-center mb-12">
+      <div class="rounded-full w-12 h-12 aspect-square bg-neutral-600"></div>
+
+      <div class="ml-4">
+        <h1 class="text-xl font-medium text-neutral-50"><%= @user.name %></h1>
+        <p class="text-xs text-neutral-50"><%= @user.bio %></p>
+      </div>
+    </div>
+
+    <%= link_to "Boards", root_path, class: "lg:text-2xl block lowercase" %>
+    <%= link_to "Events Feed", root_path, class: "lg:text-2xl block lowercase" %>
+    <%= link_to "Program Suggestions", root_path, class: "lg:text-2xl block lowercase" %>
+    <%= link_to "My Programs", root_path, class: "lg:text-2xl block lowercase" %>
+    <%= link_to "Edit", root_path, class: "lg:text-2xl block lowercase" %>
+  </aside>
+
+  <div class="xl:w-4/6">
+    
+  </div>
+</section>
