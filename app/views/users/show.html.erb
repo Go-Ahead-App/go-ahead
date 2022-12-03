@@ -1,22 +1,61 @@
-<section class="flex">
-  <aside class="w-full xl:w-2/6 p-4 md:p-0">
-    <div class="flex items-center mb-12">
-      <div class="rounded-full w-12 h-12 aspect-square bg-neutral-600"></div>
+<section class="flex mb-12">
+  <aside class="w-full xl:w-1/4 p-4 md:p-0">
 
-      <div class="ml-4">
-        <h1 class="text-xl font-medium text-neutral-50"><%= @user.name %></h1>
-        <p class="text-xs text-neutral-50"><%= @user.bio %></p>
-      </div>
-    </div>
-
-    <%= link_to "Boards", root_path, class: "lg:text-2xl block lowercase" %>
+    <%= link_to "Boards", boards_path, class: "lg:text-2xl block lowercase" %>
     <%= link_to "Events Feed", root_path, class: "lg:text-2xl block lowercase" %>
     <%= link_to "Program Suggestions", root_path, class: "lg:text-2xl block lowercase" %>
     <%= link_to "My Programs", root_path, class: "lg:text-2xl block lowercase" %>
     <%= link_to "Edit", root_path, class: "lg:text-2xl block lowercase" %>
   </aside>
 
-  <div class="xl:w-4/6">
-    
+  <div class="xl:w-2/4">
+    <h1 class="font-display xl:text-7xl mb-8"><%= "#{@user.name}, Welcome Back!" %></h1>
+
+    <div class="flex items-center mb-12">
+      <div class="rounded-full w-24 h-24 aspect-square bg-neutral-600"></div>
+
+      <div class="ml-4">
+        <h2 class="text-sm text-neutral-300"><%= "@#{@user.username}" %></h2>
+        <h1 class="text-xl font-medium text-neutral-50"><%= @user.name %></h1>
+        <p class="text-xs text-neutral-200"><%= @user.email %></p>
+      </div>
+    </div>
+
+    <p class="mt-4"><%= @user.bio %></p>
+  </div>
+
+  <div class="xl:w-1/4">
+    <div class="flex items-center space-x-4">
+      <i class="ph ph-trophy-light text-3xl"></i>
+
+      <div>
+        <h6 class="font-medium text-lg">Reminder</h6>
+        <p class="text-sm text-neutral-300">You have 3 programs to review</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="font-display text-3xl mb-4">Today</h2>
+
+  <div class="grid gap-4 xl:grid-cols-2">
+    <% 3.times do  %>
+      <div class="border-2 border-neutral-100 p-6">
+        <h4 class="font-medium text-lg">Example note</h4>
+        <p class="text-neutral-300 mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, recusandae delectus? Vitae beatae molestiae possimus. Ad, est possimus?</p>
+      </div>
+    <% end %>
+  </div>
+
+  <h2 class="font-display text-3xl mb-4 mt-12">Earlier</h2>
+
+  <div class="grid gap-4 xl:grid-cols-2">
+    <% 5.times do  %>
+      <div class="border-2 border-neutral-100 p-6">
+        <h4 class="font-medium text-lg">Example note</h4>
+        <p class="text-neutral-300 mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, recusandae delectus? Vitae beatae molestiae possimus. Ad, est possimus?</p>
+      </div>
+    <% end %>
   </div>
 </section>

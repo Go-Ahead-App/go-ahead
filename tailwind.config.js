@@ -7,7 +7,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'display': ["Michroma", "sans-serif"],
+      'display': ["Miratrix", "sans-serif"],
     },
   },
 }

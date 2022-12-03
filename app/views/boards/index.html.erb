@@ -1,0 +1,47 @@
+<section>
+  <div class="flex justify-between items-center mb-20">
+    <h1 class="font-display xl:text-7xl">Your Notes</h1>
+
+    <%= link_to "create board", new_board_path, class: "px-6 py-4 text-sm bg-neutral-900 duration-200 hover:bg-neutral-800" %>
+  </div>
+
+  <% if @boards.present? %>
+    <% @boards.each do |board| %>
+      <div class="mb-8">
+        <div class="flex justify-between items-center">
+          <div>
+            <h6 class="font-display text-2xl mb-2"><%= ">> #{board.title}" %></h6>
+            <p class="text-neutral-300"><%= board.description %></p>
+          </div>
+
+          <div class="inline-flex space-x-2">
+            <%= link_to "edit", edit_board_path(board), class: "px-4 py-2 text-sm bg-neutral-900 duration-200 hover:bg-neutral-800" %>
+            <%= link_to "add note", new_board_note_path(board), class: "px-4 py-2 text-sm bg-neutral-900 duration-200 hover:bg-neutral-800" %>
+            <%= link_to "delete", board_path(board), method: :delete, data: { confirm: "Are you sure?" }, class: "px-4 py-2 text-sm bg-red-500 duration-200 hover:bg-red-400" %>
+          </div>
+        </div>
+
+        <% if board.notes.present? %>
+          <div class="grid xl:grid-cols-2 gap-4 mt-8">
+            <% board.notes.each do |note| %>
+              <div class="border-2 border-neutral-100 p-6">
+                <h4 class="font-medium text-lg"><%= note.title %></h4>
+                <p class="text-neutral-300 mt-2"><%= note.description %></p>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="text-center mt-8">
+            <h5 class="text-xl font-medium mb-2">There is no notes yet</h5>
+            <p class="text-neutral-300">You can create a note by clicking the button above</p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="text-center">
+      <h5 class="text-xl font-medium mb-2">There is no boards yet</h5>
+      <p class="text-neutral-300">You can create a board by clicking the button above</p>
+    </div>
+  <% end %>
+</section>

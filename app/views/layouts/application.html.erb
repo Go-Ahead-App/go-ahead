@@ -6,8 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application", defer: true %>
 
     <script src="https://unpkg.com/phosphor-icons"></script>
   </head>
@@ -17,7 +17,7 @@
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    
+
     <main class="w-11/12 md:w-3/4 mx-auto min-h-screen">
       <%= yield %>
     </main>

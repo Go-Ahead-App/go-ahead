@@ -9,7 +9,7 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.json
   def index
-    @boards = Board.all
+    @boards = Board.where(user_id: current_user.id)
   end
 
   # GET /boards/1
@@ -25,32 +25,22 @@ class BoardsController < ApplicationController
   def edit; end
 
   # POST /boards
-  # POST /boards.json
   def create
     @board = Board.new(board_params)
 
-    respond_to do |format|
-      if @board.save
-        format.html { redirect_to @board, notice: 'Board was successfully created.' }
-        format.json { render :show, status: :created, location: @board }
-      else
-        format.html { render :new }
-        format.json { render json: @board.errors, status: :unprocessable_entity }
-      end
+    if @board.save
+      redirect_to boards_path, notice: 'Board was successfully created.'
+    else
+      redirect_to new_board_path, form_errors: @board.errors.full_messages
     end
   end
 
   # PATCH/PUT /boards/1
-  # PATCH/PUT /boards/1.json
   def update
-    respond_to do |format|
-      if @board.update(board_params)
-        format.html { redirect_to @board, notice: 'Board was successfully updated.' }
-        format.json { render :show, status: :ok, location: @board }
-      else
-        format.html { render :edit }
-        format.json { render json: @board.errors, status: :unprocessable_entity }
-      end
+    if @board.update(board_params)
+      redirect_to boards_path, notice: 'Board was successfully updated.'
+    else
+      redirect_to edit_board_path(@board), form_errors: @board.errors.full_messages
     end
   end
 
@@ -73,6 +63,6 @@ class BoardsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def board_params
-    params.require(:board).permit(:title, :description)
+    params.require(:board).permit(:title, :description, :user_id)
   end
 end
