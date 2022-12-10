@@ -1,6 +1,5 @@
-<section class="flex mb-12">
+<section class="flex my-12 xl:mb-32">
   <aside class="w-full xl:w-1/4 p-4 md:p-0">
-
     <%= link_to "Boards", boards_path, class: "lg:text-2xl block lowercase" %>
     <%= link_to "Events Feed", root_path, class: "lg:text-2xl block lowercase" %>
     <%= link_to "Program Suggestions", root_path, class: "lg:text-2xl block lowercase" %>
@@ -37,25 +36,26 @@
 </section>
 
 <section>
-  <h2 class="font-display text-3xl mb-4">Today</h2>
+  <% if @date_grouped_notes.any? { |date, notes| notes.any? } %>
+    <% @date_grouped_notes.each_pair do |date, notes| %>
+      <% next if notes.empty? %>
+      <div class="mb-12 xl:mb-16">
+        <h2 class="font-display text-3xl mb-4"><%= date.to_s.humanize %></h2>
 
-  <div class="grid gap-4 xl:grid-cols-2">
-    <% 3.times do  %>
-      <div class="border-2 border-neutral-100 p-6">
-        <h4 class="font-medium text-lg">Example note</h4>
-        <p class="text-neutral-300 mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, recusandae delectus? Vitae beatae molestiae possimus. Ad, est possimus?</p>
+        <div class="grid gap-4 xl:gap-8 xl:grid-cols-2">
+          <% notes.each do |note| %>
+            <%= link_to board_note_path(note.board, note), class: "border border-neutral-400 p-6 hover:border-neutral-100 duration-150 cursor-pointer" do%>
+              <h4 class="font-medium text-lg"><%= note.title %></h4>
+              <p class="text-neutral-300 mt-2"><%= note.description %></p>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     <% end %>
-  </div>
-
-  <h2 class="font-display text-3xl mb-4 mt-12">Earlier</h2>
-
-  <div class="grid gap-4 xl:grid-cols-2">
-    <% 5.times do  %>
-      <div class="border-2 border-neutral-100 p-6">
-        <h4 class="font-medium text-lg">Example note</h4>
-        <p class="text-neutral-300 mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, recusandae delectus? Vitae beatae molestiae possimus. Ad, est possimus?</p>
-      </div>
-    <% end %>
-  </div>
+  <% else %>
+    <div class="text-center mt-8">
+      <h5 class="text-xl font-medium mb-2">There is no recent notes</h5>
+      <p class="text-neutral-300">You can create a note in the boards page</p>
+    </div>
+  <% end %>
 </section>

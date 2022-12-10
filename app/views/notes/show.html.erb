@@ -1,0 +1,31 @@
+<section class="flex my-16 space-x-8">
+  <aside class="w-full xl:w-1/4 p-4 md:p-0">
+    <%= link_to "Boards", boards_path, class: "lg:text-2xl block lowercase" %>
+    <%= link_to "Events Feed", root_path, class: "lg:text-2xl block lowercase" %>
+    <%= link_to "Program Suggestions", root_path, class: "lg:text-2xl block lowercase" %>
+    <%= link_to "My Programs", root_path, class: "lg:text-2xl block lowercase" %>
+    <%= link_to "Edit", root_path, class: "lg:text-2xl block lowercase" %>
+  </aside>
+
+  <div class="xl:w-2/4">
+    <h1 class="font-display xl:text-7xl mb-8"><%= @note.title %></h1>
+    <h6 class="text-2xl"><%= @note.description %></h6>
+
+    <div class="text-neutral-300 mt-8 leading-7">
+      <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque vitae eligendi ex omnis dolores doloribus tempora expedita aperiam, sint possimus excepturi tenetur quibusdam in! Beatae amet id necessitatibus cumque asperiores.</p>
+      <p class="mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, deleniti voluptate. Aspernatur animi veritatis, doloremque rem non consequuntur repellendus accusantium error provident asperiores. Est eos eius ex porro deleniti dolores voluptatibus aliquid reiciendis, inventore iste adipisci aspernatur reprehenderit error fugiat ipsam. Numquam exercitationem ipsum provident, quas nulla eius doloremque error.</p>
+      <p class="mb-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit corporis ducimus beatae, possimus dolorum excepturi deserunt tempore sit officiis adipisci nihil aperiam nostrum voluptatibus mollitia debitis fugit, ipsum dolorem ipsam, cumque iste dolore labore consequuntur quibusdam cupiditate! Delectus officia non placeat natus eligendi mollitia odit iure ipsum adipisci! Repellendus officiis assumenda provident. Sapiente sint dolorum eum inventore natus hic et dicta dolorem iusto perferendis! Corrupti harum dolor assumenda consequatur possimus nostrum. Dicta, quaerat consequuntur minus ut blanditiis ab nihil facere nobis natus? Mollitia saepe ab accusamus eos nulla sed vel, nam deleniti hic debitis eligendi, voluptatem inventore magnam libero in.</p>
+    </div>
+  </div>
+
+  <div class="xl:w-1/4">
+    <div class="flex items-center space-x-4">
+      <i class="ph ph-calendar-light text-3xl"></i>
+
+      <div>
+        <h6 class="font-medium text-lg">Reminder</h6>
+        <p class="text-sm text-neutral-300">You have 3 programs to review</p>
+      </div>
+    </div>
+  </div>
+</section>

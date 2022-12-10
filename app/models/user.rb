@@ -9,6 +9,9 @@ class User < ApplicationRecord
 
   after_create :check_invite_code
 
+  has_many :boards
+  has_many :notes, through: :boards
+
   private
 
   def check_invite_code
