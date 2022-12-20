@@ -24,10 +24,10 @@
         <% if board.notes.present? %>
           <div class="grid xl:grid-cols-2 gap-4 mt-8">
             <% board.notes.each do |note| %>
-              <div class="border-2 border-neutral-100 p-6">
+              <%= link_to board_note_path(note.board, note), class: "border border-neutral-400 p-6 hover:border-neutral-100 duration-150 cursor-pointer" do%>
                 <h4 class="font-medium text-lg"><%= note.title %></h4>
                 <p class="text-neutral-300 mt-2"><%= note.description %></p>
-              </div>
+              <% end %>
             <% end %>
           </div>
         <% else %>

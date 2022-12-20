@@ -2,6 +2,8 @@
 
 # This is the notes controller, which is responsible for handling requests for notes.
 class NotesController < ApplicationController
+  use_inertia_instance_props
+
   before_action :set_board
   before_action :set_note, only: %i[show edit update destroy]
   before_action :authenticate_user!
@@ -20,7 +22,9 @@ class NotesController < ApplicationController
   end
 
   # GET /notes/1/edit
-  def edit; end
+  def edit
+    render inertia: 'NotesEdit', props: { note: @note }
+  end
 
   # POST /notes or /notes.json
   def create

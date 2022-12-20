@@ -4,7 +4,7 @@
     <%= link_to "Events Feed", root_path, class: "lg:text-2xl block lowercase" %>
     <%= link_to "Program Suggestions", root_path, class: "lg:text-2xl block lowercase" %>
     <%= link_to "My Programs", root_path, class: "lg:text-2xl block lowercase" %>
-    <%= link_to "Edit", root_path, class: "lg:text-2xl block lowercase" %>
+    <%= link_to "Edit", edit_board_note_path(@board, @note), class: "lg:text-2xl block lowercase" %>
   </aside>
 
   <div class="xl:w-2/4">
