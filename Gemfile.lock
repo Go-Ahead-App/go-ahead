@@ -95,6 +95,9 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.2)
     backport (1.2.0)
     bcrypt (3.1.18)
@@ -308,6 +311,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  annotate
   bootsnap
   cssbundling-rails
   devise
