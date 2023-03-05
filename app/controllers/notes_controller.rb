@@ -23,7 +23,7 @@ class NotesController < ApplicationController
 
   # GET /notes/1/edit
   def edit
-    render inertia: 'NotesEdit', props: { note: @note }
+    render inertia: 'Notes/Edit', props: { note: @note }
   end
 
   # POST /notes or /notes.json

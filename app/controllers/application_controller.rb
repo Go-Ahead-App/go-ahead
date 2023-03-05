@@ -1,5 +1,19 @@
+# frozen_string_literal: true
+
+# Before any controller action is run, check if the controller is a Devise controller, and if so,
+# permit the invite_code parameter to be passed to the sign_up action.
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :null_session
+
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  inertia_share do
+    {
+      current_user:,
+      session:,
+      csrf_token: form_authenticity_token
+    }
+  end
 
   protected
 

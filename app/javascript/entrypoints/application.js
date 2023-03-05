@@ -1,2 +1,2 @@
 import "../components/Application";
-import "../components/NotesEdit";
+import "../components/Notes/Edit";
