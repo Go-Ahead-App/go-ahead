@@ -1,5 +1,5 @@
 import { Inertia } from "@inertiajs/inertia";
-import { usePage } from "@inertiajs/inertia-react";
+import { usePage, Link } from "@inertiajs/inertia-react";
 
 import React, { useState } from "react";
 
@@ -15,18 +15,23 @@ function Edit({ note }) {
     content: note.content,
   });
 
+  React.useEffect(() => {
+    const content = document.getElementById("content");
+    content.style.height = content.scrollHeight + "px";
+  }, []);
+
   function handleChange(e) {
     const key = e.target.id;
     const value = e.target.value;
 
-    console.log(key, value);
+    if (key === "content") {
+      e.target.style.height = e.target.scrollHeight + "px";
+    }
 
     setValues((values) => ({
       ...values,
       [key]: value,
     }));
-
-    console.log(key, value);
   }
 
   function handleSubmit(e) {
@@ -38,6 +43,13 @@ function Edit({ note }) {
   return (
     <section>
       <form className="lg:w-1/2 mx-auto md:mt-32" onSubmit={handleSubmit}>
+        <Link
+          href={`/boards/${note.board_id}/notes/${note.id}`}
+          class="block duration-200 hover:text-neutral-400"
+        >
+          Back
+        </Link>
+
         <input
           type="text"
           id="title"
@@ -61,7 +73,7 @@ function Edit({ note }) {
           value={values.content || note.content}
           onChange={handleChange}
           placeholder="Note content"
-          className="text-2xl bg-transparent border-0 w-full mt-8"
+          className="text-2xl bg-transparent border-0 w-full mt-8 focus:outline-none focus:ring-0"
         />
 
         <button

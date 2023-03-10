@@ -14,7 +14,9 @@ class NotesController < ApplicationController
   end
 
   # GET /notes/1 or /notes/1.json
-  def show; end
+  def show
+    render inertia: 'Notes/Show', props: { note: @note }
+  end
 
   # GET /notes/new
   def new
@@ -76,6 +78,6 @@ class NotesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def note_params
-    params.require(:note).permit(:title, :description, :content)
+    params.require(:note).permit(:title, :description, :content, :board_id)
   end
 end
