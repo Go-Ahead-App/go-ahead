@@ -40,7 +40,8 @@ class User < ApplicationRecord
   after_create :check_invite_code
 
   has_many :boards
-  has_many :notes, through: :boards
+  has_many :notes
+  has_many :categories
 
   private
 

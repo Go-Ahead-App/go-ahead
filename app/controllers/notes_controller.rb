@@ -25,7 +25,7 @@ class NotesController < ApplicationController
 
   # GET /notes/1/edit
   def edit
-    render inertia: 'Notes/Edit', props: { note: @note }
+    render inertia: 'Notes/Edit', props: { note: @note, categories: @note.categories }
   end
 
   # POST /notes or /notes.json
@@ -78,6 +78,6 @@ class NotesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def note_params
-    params.require(:note).permit(:title, :description, :content, :board_id)
+    params.require(:note).permit(:title, :description, :content, :board_id, :user_id)
   end
 end

@@ -13,6 +13,9 @@
 #
 # A Board belongs to a User.
 class Board < ApplicationRecord
+  # TODO: Implement calendar layout.
+  enum layout: { list: 0, grid: 1, kanban: 2 }
+
   belongs_to :user
 
   has_many :notes, dependent: :destroy

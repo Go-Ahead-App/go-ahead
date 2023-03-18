@@ -22,14 +22,31 @@
         </div>
 
         <% if board.notes.present? %>
-          <div class="grid xl:grid-cols-2 gap-4 mt-8">
-            <% board.notes.each do |note| %>
-              <%= link_to board_note_path(note.board, note), class: "border border-neutral-400 p-6 hover:border-neutral-100 duration-150 cursor-pointer" do%>
-                <h4 class="font-medium text-lg"><%= note.title %></h4>
-                <p class="text-neutral-300 mt-2"><%= note.description %></p>
+
+          <% if board.layout == "list" %>
+            <div class="mt-8">
+              <% board.notes.each do |note| %>
+                <%= link_to board_note_path(note.board, note), class: "p-6 hover:pl-12 duration-150 cursor-pointer" do %>
+                  <h4 class="font-medium text-2xl"><%= note.title %></h4>
+                  <p class="text-neutral-300 mt-2 text-lg"><%= note.description %></p>
+                <% end %>
               <% end %>
-            <% end %>
-          </div>
+            </div>
+          <% elsif board.layout == "grid" %>
+            <div class="grid xl:grid-cols-2 gap-4 mt-8">
+              <% board.notes.each do |note| %>
+                <%= link_to board_note_path(note.board, note), class: "border border-neutral-400 p-6 hover:border-neutral-100 duration-150 cursor-pointer" do %>
+                  <h4 class="font-medium text-lg"><%= note.title %></h4>
+                  <p class="text-neutral-300 mt-2"><%= note.description %></p>
+                <% end %>
+              <% end %>
+            </div>
+          <% elsif board.layout == "kanban" %>
+            <h1 class="font-bold text-4xl">Kanban layout isn't available yet</h1>
+          <% else %>
+            <h1 class="font-bold text-4xl">Unknown layout</h1>
+          <% end %>
+
         <% else %>
           <div class="text-center mt-8">
             <h5 class="text-xl font-medium mb-2">There is no notes yet</h5>

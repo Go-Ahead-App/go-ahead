@@ -22,10 +22,7 @@ function Edit({ note }) {
           Edit
         </Link>
 
-        <a
-          href={`/boards/${note.board_id}`}
-          class="block duration-200 hover:text-neutral-400"
-        >
+        <a href="/boards" class="block duration-200 hover:text-neutral-400">
           Back to Boards
         </a>
       </aside>

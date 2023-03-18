@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :users
 
   resources :boards do
-    resources :notes
+    resources :notes do
+      resources :categories, only: %i[create destroy]
+    end
   end
 
   root 'static_pages#home'

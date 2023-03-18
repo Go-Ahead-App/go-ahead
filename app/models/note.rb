@@ -15,4 +15,6 @@
 # A Note belongs to a Board.
 class Note < ApplicationRecord
   belongs_to :board
+
+  has_many :categories, dependent: :destroy
 end
