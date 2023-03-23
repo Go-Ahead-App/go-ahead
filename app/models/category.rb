@@ -2,5 +2,5 @@
 
 # A Category belongs to a Note.
 class Category < ApplicationRecord
-  belongs_to :note
+  has_and_belongs_to_many :notes
 end

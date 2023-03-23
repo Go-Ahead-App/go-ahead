@@ -25,7 +25,11 @@ class NotesController < ApplicationController
 
   # GET /notes/1/edit
   def edit
-    render inertia: 'Notes/Edit', props: { note: @note, categories: @note.categories }
+    @all_categories = Category.where(user_id: current_user.id)
+
+    render inertia: 'Notes/Edit', props: {
+      note: @note, categories: @note.categories, all_categories: @all_categories
+    }
   end
 
   # POST /notes or /notes.json

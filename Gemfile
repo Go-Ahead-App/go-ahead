@@ -7,6 +7,7 @@ gem 'rails', github: 'rails/rails', branch: 'main'
 
 gem 'cssbundling-rails'
 gem 'devise'
+gem 'draper'
 gem 'inertia_rails'
 gem 'jbuilder'
 gem 'jsbundling-rails'

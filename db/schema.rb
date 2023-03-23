@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_03_18_140837) do
+ActiveRecord::Schema[7.1].define(version: 2023_03_23_174507) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_18_140837) do
     t.datetime "updated_at", null: false
     t.index ["note_id"], name: "index_categories_on_note_id"
     t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "categories_notes", id: false, force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "note_id", null: false
+    t.index ["category_id", "note_id"], name: "index_categories_notes_on_category_id_and_note_id"
   end
 
   create_table "invites", force: :cascade do |t|

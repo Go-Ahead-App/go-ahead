@@ -3,7 +3,7 @@ import { usePage, Link } from "@inertiajs/inertia-react";
 
 import React, { useState } from "react";
 
-function Edit({ note, categories }) {
+function Edit({ note, categories, all_categories }) {
   const sharedData = usePage().props;
 
   const [values, setValues] = useState({
@@ -67,39 +67,88 @@ function Edit({ note, categories }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        const categoriesContainer = document.getElementById(
-          "categories_container"
-        );
-
         if (data.error) {
         } else {
-          const categoryElement = document.createElement("li");
-          categoryElement.className = "flex items-center space-x-4";
-
-          const iconElement = document.createElement("i");
-          iconElement.className = "ph ph-tag-light";
-
-          const spanElement = document.createElement("span");
-          spanElement.innerText = data.category.name;
-
-          categoryElement.appendChild(iconElement);
-          categoryElement.appendChild(spanElement);
-
-          categoriesContainer.appendChild(categoryElement);
-
-          const notice = document.getElementById("notice");
-
-          notice.innerText = "Category created successfully";
+          appendCategoryElement(data.category.name);
         }
       });
 
     categoryField.value = "";
   }
 
+  function handleCategoryChoose(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const categoryId = e.target.dataset.id;
+
+    fetch(
+      `/boards/${note.board_id}/notes/${note.id}/categories/${categoryId}/assign`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": sharedData.csrf_token,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const categoriesContainer = document.getElementById(
+          "categories_container"
+        );
+
+        if (data.error) {
+        } else {
+          appendCategoryElement(data.category.name);
+          removeAppendedCategoryElement(categoryId);
+        }
+      });
+  }
+
+  function openAllCategories() {
+    const allCategoriesContainer = document.getElementById(
+      "all_categories_container"
+    );
+
+    allCategoriesContainer.classList.toggle("hidden");
+  }
+
+  function appendCategoryElement(title) {
+    const categoryElement = document.createElement("li");
+    categoryElement.className =
+      "flex items-center space-x-1 bg-neutral-800 p-1 text-xs";
+
+    const iconElement = document.createElement("i");
+    iconElement.className = "ph ph-tag-light";
+
+    const spanElement = document.createElement("span");
+    spanElement.innerText = title;
+
+    categoryElement.appendChild(iconElement);
+    categoryElement.appendChild(spanElement);
+
+    const categoriesContainer = document.getElementById("categories_container");
+
+    categoriesContainer.appendChild(categoryElement);
+  }
+
+  function removeAppendedCategoryElement(categoryId) {
+    const categoriesContainer = document.getElementById(
+      "all_categories_container"
+    );
+
+    const categoryElement = categoriesContainer.querySelector(
+      `[data-id="${categoryId}"]`
+    );
+
+    categoriesContainer.removeChild(categoryElement);
+  }
+
   return (
     <section className="mx-auto md:mt-32 flex justify-center space-x-16">
       <aside className="lg:w-1/3">
-        <div id="notice" className="text-sm text-neutral-300 mb-4 p-4 "></div>
+        <div id="notice" className="text-sm text-neutral-300 mb-4 p-4"></div>
 
         <h5 className="text-lg uppercase font-medium tracking-wider">
           Categories
@@ -112,7 +161,7 @@ function Edit({ note, categories }) {
           {categories &&
             categories.map((category) => (
               <li
-                className="flex items-center space-x-1 bg-neutral-800 p-1 text-xs"
+                className={`flex items-center space-x-1 bg-neutral-800 p-1 text-xs`}
                 key={category.id}
               >
                 <i className="ph ph-tag-light"></i>
@@ -127,6 +176,7 @@ function Edit({ note, categories }) {
             className="border border-neutral-400 bg-transparent p-2 px-3 block w-full"
             placeholder="Add a category"
             id="category_field"
+            onFocus={openAllCategories}
           />
 
           <button
@@ -135,6 +185,28 @@ function Edit({ note, categories }) {
           >
             Add
           </button>
+        </div>
+
+        <div
+          className="bg-neutral-900/50 p-2 inline-flex flex-wrap border border-neutral-400 gap-1 w-full hidden"
+          id="all_categories_container"
+        >
+          {all_categories &&
+            all_categories.map((category) => (
+              <div
+                className={`flex items-center space-x-1 bg-neutral-800 p-1 text-xs cursor-pointer hover:bg-neutral-700 duration-150 ${
+                  categories && categories.find((c) => c.id === category.id)
+                    ? "hidden"
+                    : ""
+                }`}
+                key={category.id}
+                data-id={category.id}
+                onClick={handleCategoryChoose}
+              >
+                <i className="ph ph-tag-light"></i>
+                <span>{category.name}</span>
+              </div>
+            ))}
         </div>
       </aside>
 

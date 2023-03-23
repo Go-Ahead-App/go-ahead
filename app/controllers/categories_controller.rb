@@ -18,6 +18,15 @@ class CategoriesController < ApplicationController
 
   def delete; end
 
+  def assign
+    @category = Category.find(params[:id])
+    @note = Note.find(params[:note_id])
+
+    @note.categories << @category
+
+    render json: { notice: 'Category was successfully assigned.', category: @category }
+  end
+
   private
 
   def category_params

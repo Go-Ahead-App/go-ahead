@@ -16,5 +16,5 @@
 class Note < ApplicationRecord
   belongs_to :board
 
-  has_many :categories, dependent: :destroy
+  has_and_belongs_to_many :categories
 end

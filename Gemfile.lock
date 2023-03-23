@@ -95,6 +95,10 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
@@ -119,6 +123,13 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
+    draper (4.0.2)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
+      activemodel-serializers-xml (>= 1.0)
+      activesupport (>= 5.0)
+      request_store (>= 1.0)
+      ruby2_keywords
     dry-cli (0.7.0)
     e2mmap (0.1.0)
     em-websocket (0.5.3)
@@ -227,6 +238,8 @@ GEM
     redis-client (0.10.0)
       connection_pool
     regexp_parser (2.6.1)
+    request_store (1.5.1)
+      rack (>= 1.4)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -255,6 +268,7 @@ GEM
     rubocop-rspec (2.14.2)
       rubocop (~> 1.33)
     ruby-progressbar (1.11.0)
+    ruby2_keywords (0.0.5)
     rufo (0.13.0)
     shellany (0.0.1)
     solargraph (0.48.0)
@@ -315,6 +329,7 @@ DEPENDENCIES
   bootsnap
   cssbundling-rails
   devise
+  draper
   error_highlight (>= 0.4.0)
   guard-livereload
   inertia_rails

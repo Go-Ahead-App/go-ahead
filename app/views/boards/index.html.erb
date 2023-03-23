@@ -42,7 +42,33 @@
               <% end %>
             </div>
           <% elsif board.layout == "kanban" %>
-            <h1 class="font-bold text-4xl">Kanban layout isn't available yet</h1>
+            <div class="overflow-x-auto">
+              <div class="inline-flex flex-nowrap gap-4 mt-8 h-screen">
+                <% board.decorate.columns.each do |category, notes| %>
+                  <div class="bg-neutral-900/50 w-96 min-w-96 p-2">
+                    <h4 class="font-bold text-xs text-center uppercase tracking-widest p-4"><%= category %></h4>
+                    <hr>
+                    <div class="w-full space-y-2">
+
+                      <% if notes.present? %>
+                        <% notes.each do |note| %>
+                          <%= link_to board_note_path(note.board, note), class: "bg-neutral-900/50 p-4 hover:bg-neutral-900/60 duration-150 cursor-pointer w-full block" do %>
+                            <h4 class="font-medium text-lg"><%= note.title %></h4>
+                            <p class="text-neutral-300 mt-2"><%= note.description %></p>
+                          <% end %>
+                        <% end %>
+                      <% else %>
+                        <div class="text-center p-4">
+                          <h5 class="text-xl font-medium mb-2">There is no notes yet</h5>
+                          <p class="text-neutral-300">You can create a note by clicking the button above</p>
+                        </div>
+                      <% end %>
+
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
           <% else %>
             <h1 class="font-bold text-4xl">Unknown layout</h1>
           <% end %>

@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   resources :boards do
     resources :notes do
-      resources :categories, only: %i[create destroy]
+      resources :categories, only: %i[create destroy] do
+        member do
+          post 'assign'
+        end
+      end
     end
   end
 
