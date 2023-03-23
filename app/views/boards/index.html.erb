@@ -24,18 +24,36 @@
         <% if board.notes.present? %>
 
           <% if board.layout == "list" %>
-            <div class="mt-8">
+            <div class="mt-8 grid">
               <% board.notes.each do |note| %>
-                <%= link_to board_note_path(note.board, note), class: "p-6 hover:pl-12 duration-150 cursor-pointer" do %>
+                <%= link_to board_note_path(note.board, note), class: "p-6 border-b border-neutral-100/20 duration-200 hover:border-neutral-100/30" do %>
+
+                  <% if note.categories.present? %>
+                    <div class="inline-flex gap-1 mb-4">
+                      <% note.categories.each do |category| %>
+                        <span class="inline-block bg-neutral-800/50 text-neutral-300 font-medium text-xs uppercase tracking-widest px-2 py-1 mr-2 mb-2"><%= category.name %></span>
+                      <% end %>
+                    </div>
+                  <% end %>
+
                   <h4 class="font-medium text-2xl"><%= note.title %></h4>
                   <p class="text-neutral-300 mt-2 text-lg"><%= note.description %></p>
                 <% end %>
               <% end %>
             </div>
           <% elsif board.layout == "grid" %>
-            <div class="grid xl:grid-cols-2 gap-4 mt-8">
+            <div class="grid grid-cols-2 xl:grid-cols-3 gap-4 mt-8">
               <% board.notes.each do |note| %>
                 <%= link_to board_note_path(note.board, note), class: "border border-neutral-400 p-6 hover:border-neutral-100 duration-150 cursor-pointer" do %>
+
+                  <% if note.categories.present? %>
+                    <div class="inline-flex gap-1 mb-4">
+                      <% note.categories.each do |category| %>
+                        <span class="inline-block bg-neutral-800/50 text-neutral-300 font-medium text-xs uppercase tracking-widest px-2 py-1 mr-2 mb-2"><%= category.name %></span>
+                      <% end %>
+                    </div>
+                  <% end %>
+
                   <h4 class="font-medium text-lg"><%= note.title %></h4>
                   <p class="text-neutral-300 mt-2"><%= note.description %></p>
                 <% end %>
