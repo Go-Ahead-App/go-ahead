@@ -10,9 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_03_23_174507) do
+ActiveRecord::Schema[7.1].define(version: 2023_03_25_080958) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actions", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "challenge_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["challenge_id"], name: "index_actions_on_challenge_id"
+  end
+
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_activities_on_event_id"
+  end
 
   create_table "boards", force: :cascade do |t|
     t.string "title"
@@ -40,6 +58,42 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_23_174507) do
     t.index ["category_id", "note_id"], name: "index_categories_notes_on_category_id_and_note_id"
   end
 
+  create_table "challenges", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "program_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["program_id"], name: "index_challenges_on_program_id"
+  end
+
+  create_table "enrolled_programs", force: :cascade do |t|
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.bigint "program_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["program_id"], name: "index_enrolled_programs_on_program_id"
+    t.index ["user_id"], name: "index_enrolled_programs_on_user_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.bigint "enrolled_program_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enrolled_program_id"], name: "index_events_on_enrolled_program_id"
+  end
+
+  create_table "exercises", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_exercises_on_activity_id"
+  end
+
   create_table "invites", force: :cascade do |t|
     t.string "code"
     t.datetime "expire_at"
@@ -57,6 +111,27 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_23_174507) do
     t.bigint "user_id", null: false
     t.index ["board_id"], name: "index_notes_on_board_id"
     t.index ["user_id"], name: "index_notes_on_user_id"
+  end
+
+  create_table "programs", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "difficulty"
+    t.integer "length"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "progresses", force: :cascade do |t|
+    t.boolean "completed"
+    t.bigint "user_id", null: false
+    t.bigint "enrolled_program_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enrolled_program_id"], name: "index_progresses_on_enrolled_program_id"
+    t.index ["event_id"], name: "index_progresses_on_event_id"
+    t.index ["user_id"], name: "index_progresses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,9 +165,19 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_23_174507) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "actions", "challenges"
+  add_foreign_key "activities", "events"
   add_foreign_key "boards", "users"
   add_foreign_key "categories", "notes"
   add_foreign_key "categories", "users"
+  add_foreign_key "challenges", "programs"
+  add_foreign_key "enrolled_programs", "programs"
+  add_foreign_key "enrolled_programs", "users"
+  add_foreign_key "events", "enrolled_programs"
+  add_foreign_key "exercises", "activities"
   add_foreign_key "notes", "boards"
   add_foreign_key "notes", "users"
+  add_foreign_key "progresses", "enrolled_programs"
+  add_foreign_key "progresses", "events"
+  add_foreign_key "progresses", "users"
 end

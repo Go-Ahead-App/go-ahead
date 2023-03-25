@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @enrolled_program %>
+
+<div>
+  <%= link_to "Edit this enrolled program", edit_enrolled_program_path(@enrolled_program) %> |
+  <%= link_to "Back to enrolled programs", enrolled_programs_path %>
+
+  <%= button_to "Destroy this enrolled program", @enrolled_program, method: :delete %>
+</div>

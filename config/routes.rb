@@ -2,6 +2,15 @@
 
 # Routes for the application
 Rails.application.routes.draw do
+  resources :progresses
+  resources :exercises
+  resources :activities
+  resources :events
+  resources :enrolled_programs
+  resources :actions
+  resources :challenges
+  resources :programs
+
   devise_for :users
 
   resources :users

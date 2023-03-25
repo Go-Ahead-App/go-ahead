@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Progresses</h1>
+
+<div id="progresses">
+  <% @progresses.each do |progress| %>
+    <%= render progress %>
+    <p>
+      <%= link_to "Show this progress", progress %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New progress", new_progress_path %>

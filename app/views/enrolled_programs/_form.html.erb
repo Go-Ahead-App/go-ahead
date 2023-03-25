@@ -1,0 +1,32 @@
+<%= form_with(model: enrolled_program) do |form| %>
+  <% if enrolled_program.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(enrolled_program.errors.count, "error") %> prohibited this enrolled_program from being saved:</h2>
+
+      <ul>
+        <% enrolled_program.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :program_id, style: "display: block" %>
+    <%= form.text_field :program_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
