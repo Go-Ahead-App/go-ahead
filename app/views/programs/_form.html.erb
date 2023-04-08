@@ -13,25 +13,25 @@
 
   <div>
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "px-4 py-3 bg-transparent border border-neutral-500 w-full focus:outline-0 focus:border-neutral-100 duration-200" %>
   </div>
 
   <div>
     <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: "px-4 py-3 bg-transparent border border-neutral-500 w-full focus:outline-0 focus:border-neutral-100 duration-200" %>
   </div>
 
   <div>
     <%= form.label :difficulty, style: "display: block" %>
-    <%= form.number_field :difficulty %>
+    <%= form.number_field :difficulty, class: "px-4 py-3 bg-transparent border border-neutral-500 w-full focus:outline-0 focus:border-neutral-100 duration-200" %>
   </div>
 
   <div>
     <%= form.label :length, style: "display: block" %>
-    <%= form.number_field :length %>
+    <%= form.number_field :length, class: "px-4 py-3 bg-transparent border border-neutral-500 w-full focus:outline-0 focus:border-neutral-100 duration-200" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mt-4">
+    <%= form.submit class: "px-6 py-4 text-sm bg-neutral-900 duration-200 hover:bg-neutral-800" %>
   </div>
 <% end %>

@@ -11,8 +11,15 @@ class ApplicationController < ActionController::Base
     {
       current_user:,
       session:,
-      csrf_token: form_authenticity_token
+      csrf_token: form_authenticity_token,
+      flash: flash.to_hash
     }
+  end
+
+  def authenticate_admin!
+    return if current_user&.is_admin?
+
+    redirect_to root_path, alert: 'You must be an admin to do that.'
   end
 
   protected

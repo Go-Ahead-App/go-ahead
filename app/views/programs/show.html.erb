@@ -1,10 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @program %>
+<div class="flex justify-center mt-8 mb-4">
+  <section class="w-3/4 flex justify-between items-center">
+    <div>
+      <%= link_to "Back to Programs", programs_path, class: "px-6 py-4 inline-block text-sm bg-neutral-900 duration-200 hover:bg-neutral-800" %>
+    </div>
 
-<div>
-  <%= link_to "Edit this program", edit_program_path(@program) %> |
-  <%= link_to "Back to programs", programs_path %>
-
-  <%= button_to "Destroy this program", @program, method: :delete %>
+    <% if admin? %>
+      <div>
+        <%= link_to "Edit Program", edit_program_path(@program), class: "px-6 py-4 inline-block text-sm bg-neutral-900 duration-200 hover:bg-neutral-800" %>
+      </div>
+    <% end %>
+  </section>
 </div>
+
+<%= render @program %>

@@ -1,22 +1,33 @@
-<div id="<%= dom_id program %>">
-  <p>
-    <strong>Name:</strong>
-    <%= program.name %>
-  </p>
+<div class="flex justify-center">
+  <section class="w-3/4">
+    <%= image_tag '1.png', alt: '' %>
 
-  <p>
-    <strong>Description:</strong>
-    <%= program.description %>
-  </p>
+    <h1 class="font-display text-4xl mt-8">
+      <%= program.name %>
+    </h1>
 
-  <p>
-    <strong>Difficulty:</strong>
-    <%= program.difficulty %>
-  </p>
+    <p class="text-xl mt-6">
+      <%= program.decorate.display_description %>
+    </p>
 
-  <p>
-    <strong>Length:</strong>
-    <%= program.length %>
-  </p>
+    <% if program.challenges %>
+      <h2 class="font-display text-2xl mt-8">
+        Challenges
+      </h2>
 
+      <ul class="mt-8 grid grid-cols-3 gap-4">
+        <% program.challenges.each do |challenge| %>
+          <li class="p-4 bg-neutral-900">
+            <h5 class="text-2xl font-bold">
+              <%= challenge.name %>
+            </h5>
+
+            <p class="text-neutral-300 mt-4">
+              <%= challenge.description %>
+            </p>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </section>
 </div>

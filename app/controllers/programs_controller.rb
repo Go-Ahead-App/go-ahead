@@ -1,5 +1,10 @@
+# frozen_string_literal: true
+
+# This is a Ruby class that defines the controller for a program model, with methods for handling CRUD
+# operations and authentication.
 class ProgramsController < ApplicationController
   before_action :set_program, only: %i[show edit update destroy]
+  before_action :authenticate_admin!, only: %i[new edit create update destroy]
 
   # GET /programs or /programs.json
   def index
@@ -8,14 +13,18 @@ class ProgramsController < ApplicationController
 
   # GET /programs/1 or /programs/1.json
   def show; end
-2
+
   # GET /programs/new
   def new
     @program = Program.new
+
+    render inertia: 'Programs/New', props: { program: @program }
   end
 
   # GET /programs/1/edit
-  def edit; end
+  def edit
+    render inertia: 'Programs/Edit', props: { program: @program, challenges: @program.challenges }
+  end
 
   # POST /programs or /programs.json
   def create
@@ -36,7 +45,7 @@ class ProgramsController < ApplicationController
   def update
     respond_to do |format|
       if @program.update(program_params)
-        format.html { redirect_to program_url(@program), notice: 'Program was successfully updated.' }
+        format.html { redirect_to edit_program_url(@program), notice: 'Program was successfully updated.' }
         format.json { render :show, status: :ok, location: @program }
       else
         format.html { render :edit, status: :unprocessable_entity }
