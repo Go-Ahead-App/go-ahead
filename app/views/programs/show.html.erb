@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="flex justify-center mt-8 mb-4">
+  <section class="w-3/4 flex justify-between items-center">
+    <div>
+      <%= link_to "Back to Programs", programs_path, class: "px-6 py-4 inline-block text-sm bg-neutral-900 duration-200 hover:bg-neutral-800" %>
+    </div>
+
+    <% if admin? %>
+      <div>
+        <%= link_to "Edit Program", edit_program_path(@program), class: "px-6 py-4 inline-block text-sm bg-neutral-900 duration-200 hover:bg-neutral-800" %>
+      </div>
+    <% end %>
+  </section>
+</div>
+
+<%= render @program %>

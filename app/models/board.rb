@@ -10,8 +10,8 @@
 #  user_id     :bigint           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  layout      :integer          default("list")
 #
-# A Board belongs to a User.
 class Board < ApplicationRecord
   # TODO: Implement calendar layout.
   enum layout: { list: 0, grid: 1, kanban: 2 }

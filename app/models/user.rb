@@ -29,8 +29,8 @@
 #  bio                    :text
 #  birthday               :date
 #  invite_code            :string
+#  is_admin               :boolean          default(FALSE)
 #
-# After a user is created, check if they have an invite code and if so, confirm them.
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

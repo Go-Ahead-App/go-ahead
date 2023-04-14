@@ -11,8 +11,8 @@
 #  board_id    :bigint           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  user_id     :bigint           not null
 #
-# A Note belongs to a Board.
 class Note < ApplicationRecord
   belongs_to :board
 

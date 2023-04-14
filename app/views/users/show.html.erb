@@ -2,9 +2,26 @@
   <aside class="w-full xl:w-1/4 p-4 md:p-0">
     <%= link_to "Boards", boards_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-400" %>
     <%= link_to "Events Feed", root_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-400" %>
-    <%= link_to "Program Suggestions", root_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-400" %>
+    <%= link_to "Program Suggestions", programs_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-400" %>
     <%= link_to "My Programs", root_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-400" %>
     <%= link_to "Edit", root_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-400" %>
+
+    <% if admin? %>
+      <div class="mt-12">
+        <h3 class="lg:text-xs block uppercase duration-200 text-red-400">Admin Dashboard</h3>
+
+        <%= link_to "Users", users_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-400" %>
+
+        <div class="">
+          <%= link_to "Programs", programs_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-400" %>
+
+          <div class="px-4">
+            <%= link_to "New Program", new_program_path, class: "lg:text-lg block lowercase duration-200 hover:text-neutral-400" %>
+            <%= link_to "All Programs", programs_path, class: "lg:text-lg block lowercase duration-200 hover:text-neutral-400" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </aside>
 
   <div class="xl:w-2/4">
