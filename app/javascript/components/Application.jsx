@@ -3,8 +3,8 @@ import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/inertia-react";
 
 createInertiaApp({
-  resolve: async (name) => {
-    return import(`./${name}`);
+  resolve: (name) => {
+    return import(`./${name}.jsx`, { eager: true });
   },
   setup({ el, App, props }) {
     const container = document.getElementById(el.id);
