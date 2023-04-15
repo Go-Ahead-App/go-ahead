@@ -1,0 +1,43 @@
+<section class="flex my-12 xl:mb-32">
+  <aside class="w-full xl:w-1/4 p-4 md:p-0">
+    <%= link_to "Boards", boards_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-600" %>
+    <%= link_to "Events Feed", root_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-600" %>
+    <%= link_to "Program Suggestions", programs_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-600" %>
+    <%= link_to "My Programs", root_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-600" %>
+    <%= link_to "Profile", user_path(@user), class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-600" %>
+  </aside>
+
+  <div class="w-2/4">
+    <%= form_for @user, html: {  }  do |f| %>
+      <div class="flex items-center mb-12 w-full">
+        <div class="rounded-full w-24 h-24 aspect-square bg-neutral-200"></div>
+
+        <div class="ml-4 w-full">
+          <div class="mb-4">
+            <%= f.label :username, class: "text-sm text-neutral-600 block" %>
+            <%= f.text_field :username, class: "px-4 py-3 bg-transparent border border-neutral-500 w-full focus:outline-0 focus:border-neutral-400 duration-200 rounded-md w-full" %>
+          </div>
+
+          <div class="mb-4">
+            <%= f.label :name, class: "text-sm text-neutral-600 block" %>
+            <%= f.text_field :name, class: "px-4 py-3 bg-transparent border border-neutral-500 w-full focus:outline-0 focus:border-neutral-400 duration-200 rounded-md w-full" %>
+          </div>
+
+          <div class="mb-4">
+            <%= f.label :email, class: "text-sm text-neutral-600 block" %>
+            <%= f.text_field :email, class: "px-4 py-3 bg-transparent border border-neutral-500 w-full focus:outline-0 focus:border-neutral-400 duration-200 rounded-md w-full" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label :bio, class: "text-sm text-neutral-600 block" %>
+        <%= f.text_area :bio, class: "px-4 py-3 bg-transparent border border-neutral-500 w-full focus:outline-0 focus:border-neutral-400 duration-200 rounded-md w-full" %>
+      </div>
+
+      <div class="mb-4">
+        <%= f.submit "Update Profile", class: "px-6 py-4 text-sm bg-neutral-100 text-neutral-700 hover:bg-neutral-50 duration-200 cursor-pointer rounded-md" %>
+      </div>
+    <% end %>
+  </div>
+</section>
