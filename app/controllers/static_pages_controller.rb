@@ -4,6 +4,5 @@
 # user's information as a prop.
 class StaticPagesController < ApplicationController
   def home
-    render inertia: 'StaticPages/Home', props: { user: current_user }
   end
 end
