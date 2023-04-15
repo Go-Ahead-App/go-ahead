@@ -1,14 +1,14 @@
 <section class="flex my-16 space-x-8">
   <aside class="w-full xl:w-1/4 p-4 md:p-0">
-    <%= link_to "Boards", boards_path, class: "lg:text-2xl block lowercase" %>
-    <%= link_to "Edit", edit_board_note_path(@board, @note), class: "lg:text-2xl block lowercase" %>
+    <%= link_to "Boards", boards_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-600" %>
+    <%= link_to "Edit", edit_board_note_path(@board, @note), class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-600" %>
   </aside>
 
   <div class="xl:w-2/4">
     <h1 class="font-display xl:text-7xl mb-8"><%= @note.title %></h1>
-    <h6 class="text-2xl"><%= @note.description %></h6>
+    <h6 class="text-lg font-medium"><%= @note.description %></h6>
 
-    <div class="text-neutral-300 mt-8 leading-7">
+    <div class="text-neutral-600 mt-8 leading-7">
       <%= @note.content %>
     </div>
   </div>

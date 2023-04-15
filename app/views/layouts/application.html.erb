@@ -14,10 +14,10 @@
     <script src="https://unpkg.com/phosphor-icons"></script>
   </head>
 
-  <body class="bg-white text-neutral-900 dark:bg-black dark:text-neutral-100 <%= action_name == 'home' ? '' : 'pt-12 md:pt-16 xl:pt-24' %>">
+  <body class="bg-white text-neutral-900 dark:bg-black dark:text-neutral-100 min-h-screen flex flex-col justify-start">
     <%= render "shared/header" %>
 
-    <main class="w-11/12 md:w-3/4 mx-auto min-h-screen">
+    <main class="w-11/12 md:w-3/4 mx-auto">
       <%= yield %>
     </main>
 

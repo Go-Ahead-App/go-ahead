@@ -1,11 +1,11 @@
-<header class="h-12 md:h-16 xl:h-24 absolute w-full flex items-center top-0 z-10">
+<header class="flex items-center justify-between py-4 md:py-8">
   <div class="flex items-center justify-between w-11/12 md:w-3/4 mx-auto">
-    <%= link_to ">> go-ahead", root_path, class: "text-xs md:text-sm font-display font-bold text-neutral-50" %>
+    <%= link_to ">> go-ahead", root_path, class: "text-xs md:text-sm font-display font-bold text-neutral-900" %>
 
     <nav class="flex items-center space-x-2 md:space-x-3 text-xs md:text-sm lg:text-base lg:space-x-6">
       <% if current_user %>
-        <%= link_to "Dashboard", user_path(current_user), class: "text-neutral-50 duration-200 hover:opacity-70 bg-emerald-500 px-2", data: { theme: '' } %>
-        <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "text-neutral-50 duration-200 hover:opacity-70" %>
+        <%= link_to "Dashboard", user_path(current_user), class: "text-red-700 duration-200 hover:bg-red-100 bg-red-200 px-6 py-3 rounded-md" %>
+        <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "text-neutral-700 duration-200 hover:opacity-70" %>
       <% else %>
         <%= link_to "Sign In", new_user_session_path, class: "font-bold duration-200 hover:opacity-70" %>
         <%= link_to "Register", new_user_registration_path, class: "duration-200 hover:opacity-70" %>

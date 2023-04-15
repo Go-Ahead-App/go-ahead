@@ -2,7 +2,7 @@
   <div class="flex justify-between items-center mb-20">
     <h1 class="font-display xl:text-7xl">Your Notes</h1>
 
-    <%= link_to "create board", new_board_path, class: "px-6 py-4 text-sm bg-neutral-900 duration-200 hover:bg-neutral-800" %>
+    <%= link_to "create board", new_board_path, class: "px-6 py-3 bg-neutral-100 text-neutral-700 rounded-md duration-200 hover:bg-neutral-50" %>
   </div>
 
   <% if @boards.present? %>
@@ -11,13 +11,13 @@
         <div class="flex justify-between items-center">
           <div>
             <h6 class="font-display text-2xl mb-2"><%= ">> #{board.title}" %></h6>
-            <p class="text-neutral-300"><%= board.description %></p>
+            <p class="text-neutral-600 text-xs"><%= board.description %></p>
           </div>
 
           <div class="inline-flex space-x-2">
-            <%= link_to "edit", edit_board_path(board), class: "px-4 py-2 text-sm bg-neutral-900 duration-200 hover:bg-neutral-800" %>
-            <%= link_to "add note", new_board_note_path(board), class: "px-4 py-2 text-sm bg-neutral-900 duration-200 hover:bg-neutral-800" %>
-            <%= link_to "delete", board_path(board), method: :delete, data: { confirm: "Are you sure?" }, class: "px-4 py-2 text-sm bg-red-500 duration-200 hover:bg-red-400" %>
+            <%= link_to "edit", edit_board_path(board), class: "px-4 py-2 text-sm bg-neutral-100 text-neutral-700 rounded-md duration-200 hover:bg-neutral-50" %>
+            <%= link_to "add note", new_board_note_path(board), class: "px-4 py-2 text-sm bg-neutral-100 text-neutral-700 rounded-md duration-200 hover:bg-neutral-50" %>
+            <%= link_to "delete", board_path(board), method: :delete, data: { confirm: "Are you sure?" }, class: "px-4 py-2 text-sm text-red-700 bg-red-200 duration-200 hover:bg-red-100 rounded-md" %>
           </div>
         </div>
 
@@ -37,25 +37,25 @@
                   <% end %>
 
                   <h4 class="font-medium text-2xl"><%= note.title %></h4>
-                  <p class="text-neutral-300 mt-2 text-lg"><%= note.description %></p>
+                  <p class="text-neutral-600 mt-2 text-lg"><%= note.description %></p>
                 <% end %>
               <% end %>
             </div>
           <% elsif board.layout == "grid" %>
             <div class="grid grid-cols-2 xl:grid-cols-3 gap-4 mt-8">
               <% board.notes.each do |note| %>
-                <%= link_to board_note_path(note.board, note), class: "border border-neutral-400 p-6 hover:border-neutral-100 duration-150 cursor-pointer" do %>
+                <%= link_to board_note_path(note.board, note), class: "border border-neutral-400 p-6 hover:border-neutral-300 duration-150 cursor-pointer rounded-md" do %>
 
                   <% if note.categories.present? %>
                     <div class="inline-flex gap-1 mb-4">
                       <% note.categories.each do |category| %>
-                        <span class="inline-block bg-neutral-800/50 text-neutral-300 font-medium text-xs uppercase tracking-widest px-2 py-1 mr-2 mb-2"><%= category.name %></span>
+                        <span class="inline-block bg-neutral-800/50 text-neutral-600 font-medium text-xs uppercase tracking-widest px-2 py-1 mr-2 mb-2"><%= category.name %></span>
                       <% end %>
                     </div>
                   <% end %>
 
                   <h4 class="font-medium text-lg"><%= note.title %></h4>
-                  <p class="text-neutral-300 mt-2"><%= note.description %></p>
+                  <p class="text-neutral-600 mt-2"><%= note.description %></p>
                 <% end %>
               <% end %>
             </div>
@@ -63,22 +63,22 @@
             <div class="overflow-x-auto">
               <div class="inline-flex flex-nowrap gap-4 mt-8 h-screen">
                 <% board.decorate.columns.each do |category, notes| %>
-                  <div class="bg-neutral-900/50 w-96 min-w-96 p-2">
+                  <div class="bg-neutral-50 w-96 min-w-96 p-2 rounded-lg">
                     <h4 class="font-bold text-xs text-center uppercase tracking-widest p-4"><%= category %></h4>
                     <hr>
                     <div class="w-full space-y-2">
 
                       <% if notes.present? %>
                         <% notes.each do |note| %>
-                          <%= link_to board_note_path(note.board, note), class: "bg-neutral-900/50 p-4 hover:bg-neutral-900/60 duration-150 cursor-pointer w-full block" do %>
+                          <%= link_to board_note_path(note.board, note), class: "bg-neutral-100 rounded-md p-4 hover:bg-neutral-200/60 duration-150 cursor-pointer w-full block" do %>
                             <h4 class="font-medium text-lg"><%= note.title %></h4>
-                            <p class="text-neutral-300 mt-2"><%= note.description %></p>
+                            <p class="text-neutral-600 mt-2"><%= note.description %></p>
                           <% end %>
                         <% end %>
                       <% else %>
                         <div class="text-center p-4">
                           <h5 class="text-xl font-medium mb-2">There is no notes yet</h5>
-                          <p class="text-neutral-300">You can create a note by clicking the button above</p>
+                          <p class="text-neutral-600">You can create a note by clicking the button above</p>
                         </div>
                       <% end %>
 
