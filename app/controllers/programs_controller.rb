@@ -17,14 +17,10 @@ class ProgramsController < ApplicationController
   # GET /programs/new
   def new
     @program = Program.new
-
-    render inertia: 'Programs/New', props: { program: @program }
   end
 
   # GET /programs/1/edit
-  def edit
-    render inertia: 'Programs/Edit', props: { program: @program, challenges: @program.challenges }
-  end
+  def edit; end
 
   # POST /programs or /programs.json
   def create

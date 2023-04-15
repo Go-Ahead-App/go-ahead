@@ -8,14 +8,14 @@ gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'cssbundling-rails'
 gem 'devise'
 gem 'draper'
-gem 'inertia_rails'
 gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'pg', '~> 1.1'
 gem 'puma', '>= 5.0'
+gem 'react-rails', '= 2.6'
 gem 'redis', '>= 4.0.1'
+gem 'shakapacker', '= 6.6'
 gem 'sprockets-rails'
-gem 'vite_rails'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mswin mswin64 mingw x64_mingw jruby]

@@ -7,15 +7,6 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  inertia_share do
-    {
-      current_user:,
-      session:,
-      csrf_token: form_authenticity_token,
-      flash: flash.to_hash
-    }
-  end
-
   def authenticate_admin!
     return if current_user&.is_admin?
 
