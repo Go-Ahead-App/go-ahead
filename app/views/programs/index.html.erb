@@ -2,18 +2,19 @@
 <div class="flex items-center justify-between mb-16">
   <h1 class="font-display text-6xl">Program Suggestions</h1>
 
-  <%= link_to "Create a Program", new_program_path, class: "px-6 py-4 text-sm bg-neutral-900 duration-200 hover:bg-neutral-800" %>
+  <%= link_to "Create a Program", new_program_path, class: "px-6 py-4 text-sm bg-neutral-100 text-neutral-700 hover:bg-neutral-50 duration-200 cursor-pointer rounded-md" %>
 </div>
 
 <div class="grid xl:grid-cols-2 gap-8">
   <% @programs.each do |program| %>
-    <div class="bg-neutral-900/50 cursor-pointer group relative">
-      <div class="h-96 bg-cover bg-center group-hover:opacity-10" style="background-image: url('assets/1.png');"></div>
+    <div class="bg-neutral-900/50 cursor-pointer group relative rounded-md">
+      <div class="h-96 bg-cover bg-center group-hover:opacity-10 duration-200 rounded-md" style="background-image: url('assets/1.png');"></div>
 
-      <div class="p-8 absolute opacity-0 group-hover:opacity-100 inset-0">
-        <h2 class="font-display mb-4 text-xl"><%= program.name %></h2>
-        <p class="text-neutral-300 mb-4"><%= program.description %></p>
-        <%= link_to "Learn More", program_path(program), class: "text-neutral-100 bg-neutral-400/10 hover:bg-neutral-400/20 px-6 py-4 duration-200 inline-block mt-4" %>
+      <div class="p-8 absolute opacity-0 group-hover:opacity-100 inset-0 duration-200">
+        <h2 class="font-display mb-4 text-xl text-neutral-100"><%= program.name %></h2>
+        <p class="text-neutral-200 mb-8"><%= program.description %></p>
+
+        <%= link_to "Learn More", program_path(program), class: "px-6 py-4 text-sm bg-neutral-100 text-neutral-700 hover:bg-neutral-50 duration-200 cursor-pointer rounded-md" %>
       </div>
     </div>
   <% end %>

@@ -14,12 +14,19 @@ class MarkupParserService
   private
 
   def parse_markup
-    # Parse titles started with #, ##, ###, ####, #####
     markup.gsub!(/(#+)(.*)/) do |match|
       level = match.scan(/#/).count
       content = match.gsub(/#+/, '').strip
 
       "<h#{level} class='text-#{level}xl font-bold mb-4'>#{content}</h#{level}>"
+    end
+
+    markup.gsub!(/(.*)\n?/) do |match|
+      content = match.strip
+
+      next if content.empty?
+
+      "<p class='mb-4'>#{content}</p>"
     end
 
     markup
