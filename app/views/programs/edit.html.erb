@@ -1,10 +1,3 @@
-<h1 class="font-display mb-8 text-3xl">Editing program</h1>
-
-<%= render "form", program: @program %>
-
-<br>
-
-<div>
-  <%= link_to "Show this program", @program %> |
-  <%= link_to "Back to programs", programs_path %>
-</div>
+<%= react_component("Programs/Edit", {
+  program: @program, challenges: @program.challenges,
+}) %>
