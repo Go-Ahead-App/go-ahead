@@ -12,7 +12,7 @@
 
       <div class="p-8 absolute opacity-0 group-hover:opacity-100 inset-0 duration-200">
         <h2 class="font-display mb-4 text-xl text-neutral-100"><%= program.name %></h2>
-        <p class="text-neutral-200 mb-8"><%= program.description %></p>
+        <p class="text-neutral-200 mb-8"><%= program.description.truncate(200) %></p>
 
         <%= link_to "Learn More", program_path(program), class: "px-6 py-4 text-sm bg-neutral-100 text-neutral-700 hover:bg-neutral-50 duration-200 cursor-pointer rounded-md" %>
       </div>

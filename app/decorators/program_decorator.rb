@@ -10,4 +10,21 @@ class ProgramDecorator < Draper::Decorator
 
     parsed ? parsed.html_safe : ''
   end
+
+  def display_difficulty
+    case object.difficulty
+    when 0
+      'Легко'
+    when 1
+      'Середнє'
+    when 2
+      'Складно'
+    else
+      'Невідомо'
+    end
+  end
+
+  def display_length
+    "#{object.length} днів"
+  end
 end
