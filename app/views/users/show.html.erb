@@ -1,53 +1,8 @@
-<div class="w-1/3 bg-red-400/20 absolute top-0 left-0 rounded-full filter blur-3xl z-0 aspect-square"></div>
-<div class="w-1/3 bg-green-400/30 absolute bottom-0 right-0 rounded-full filter blur-3xl z-0 aspect-square"></div>
+<%= image_tag "patterns/001.png", alt: "pattern", class: "absolute -left-96 top-0" %>
+<%= image_tag "patterns/001.png", alt: "pattern", class: "absolute -right-96 bottom-0" %>
 
 <section class="flex flex-col md:space-x-8 md:flex-row">
-  <div class="w-full xl:w-1/4">
-    <aside class="p-4 md:p-8 rounded-md bg-neutral-50/30 border border-neutral-200/30 mb-8 space-y-3 z-10 relative">
-      <%= link_to boards_path, class: "lg:text-xl flex items-center space-x-2 duration-200 hover:text-neutral-600" do %>
-        <i class="ph ph-squares-four-light"></i>
-
-        <span>Boards</span>
-      <% end %>
-
-      <%= link_to programs_path, class: "lg:text-xl flex items-center space-x-2 duration-200 hover:text-neutral-600" do %>
-        <i class="ph ph-barbell-light"></i>
-
-        <span>Programs List</span>
-      <% end %>
-
-      <%= link_to programs_path, class: "lg:text-xl flex items-center space-x-2 duration-200 hover:text-neutral-600" do %>
-        <i class="ph ph-check-circle-light"></i>
-
-        <span>Enrolled Programs</span>
-      <% end %>
-
-      <%= link_to edit_user_path(@user), class: "lg:text-xl flex items-center space-x-2 duration-200 hover:text-neutral-600" do %>
-        <i class="ph ph-pencil-light"></i>
-
-        <span>Edit Profile</span>
-      <% end %>
-
-    </aside>
-
-    <% if admin? %>
-      <aside class="p-4 md:p-8 rounded-md bg-neutral-50/30 border border-neutral-200/30 mb-8 md:mb-0 space-y-3 z-10 relative">
-        <span class="absolute px-2 py-1 bg-red-200 rounded-md border border-red-400 text-red-400 text-xs -top-3">admin</span>
-
-        <%= link_to edit_user_path(@user), class: "lg:text-xl flex items-center space-x-2 duration-200 hover:text-neutral-600" do %>
-          <i class="ph ph-users-light"></i>
-
-          <span>All Users</span>
-        <% end %>
-
-        <%= link_to new_program_path, class: "lg:text-xl flex items-center space-x-2 duration-200 hover:text-neutral-600" do %>
-          <i class="ph ph-plus-light"></i>
-
-          <span>Create Program</span>
-        <% end %>
-        </aside>
-    <% end %>
-  </div>
+  <%= render partial: "users/shared/sidebar" %>
 
   <div class="xl:w-2/4 z-10">
     <h1 class="font-display xl:text-7xl mb-4 md:mb-8"><%= "#{@user.name}, Welcome Back!" %></h1>
@@ -62,22 +17,22 @@
       </div>
     </div>
 
-    <p class="mt-4"><%= @user.bio %></p>
+    <p class="mt-4 text-xl leading-7"><%= @user.bio %></p>
   </div>
 
   <div class="xl:w-1/4 mt-8 md:mt-0 z-10">
-    <div class="flex items-center space-x-4 bg-neutral-50/30 p-4 rounded-md border border-neutral-200/30">
+    <div class="flex items-center space-x-4 p-4 rounded-md border border-neutral-900">
       <i class="ph ph-trophy-light text-3xl"></i>
 
       <div>
         <h6 class="font-medium text-lg">Reminder</h6>
-        <p class="text-sm text-neutral-300">You have 3 programs to review</p>
+        <p class="text-sm text-neutral-600">You have 3 programs to review</p>
       </div>
     </div>
   </div>
 </section>
 
-<section>
+<section class="flex flex-col items-center">
   <% if @date_grouped_notes.any? { |date, notes| notes.any? } %>
     <% @date_grouped_notes.each_pair do |date, notes| %>
       <% next if notes.empty? %>
@@ -95,9 +50,9 @@
       </div>
     <% end %>
   <% else %>
-    <div class="text-center mt-8">
-      <h5 class="text-xl font-medium mb-2">There is no recent notes</h5>
-      <p class="text-neutral-600">You can create a note in the boards page</p>
+    <div class="text-center mt-32 md:w-96">
+      <h5 class="text-3xl font-medium mb-4">Empty</h5>
+      <p class="text-neutral-600 text-xl">You can create a note in the boards page</p>
     </div>
   <% end %>
 </section>

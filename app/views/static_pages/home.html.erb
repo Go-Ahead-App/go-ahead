@@ -1,33 +1,157 @@
-<section>
-  <div class="py-32">
-    <h1 class="font-display text-3xl lg:text-5xl xl:text-8xl relative">Саморозвитоtк по-новому з <span class="text-red-500">go-ahead</span></h1>
+<section class="p-8 h-screen flex items-center justify-center">
+  <div class="absolute top-0 w-full z-10">
+    <nav class="flex items-center justify-between">
+      <%= link_to root_path, class: 'text-xl font-medium text-yellow-200 duration-200 hover:text-yellow-50 p-8 group' do %>
+        <span>
+          Workouts
+        </span>
 
-    <%= link_to new_user_registration_path, class: "px-6 py-3 bg-neutral-100 text-neutral-500 mt-8 inline-flex items-center space-x-2 rounded-md duration-200 hover:bg-neutral-50" do %>
-      <i class="ph ph-play-thin"></i>
+        <div class="grid grid-cols-2 gap-8 absolute pointer-events-none left-64 top-48 opacity-0 duration-200 group-hover:opacity-80 group-hover:top-64">
+          <div class="grid gap-8">
+            <div style="background-image: url('https://source.unsplash.com/random/0?workout,fitness,sport,gym')" class="w-64 h-64 bg-cover bg-center"></div>
+            <div style="background-image: url('https://source.unsplash.com/random/1?workout,fitness,sport,gym')" class="w-64 h-96 bg-cover bg-center"></div>
+          </div>
 
-      <span>Розпочати</span>
-    <% end %>
+          <div class="grid gap-8">
+            <div style="background-image: url('https://source.unsplash.com/random/2?workout,fitness,sport,gym')" class="w-64 h-96 bg-cover bg-center"></div>
+            <div style="background-image: url('https://source.unsplash.com/random/3?workout,fitness,sport,gym')" class="w-64 h-64 bg-cover bg-center"></div>
+          </div>
+        </div>
+      <% end %>
+      <%= link_to root_path, class: 'text-xl font-medium text-yellow-200 duration-200 hover:text-yellow-50 p-8 group' do %>
+        <span>
+          Location
+        </span>
+
+        <div class="grid grid-cols-2 gap-8 absolute pointer-events-none right-64 top-48 opacity-0 duration-200 group-hover:opacity-80 group-hover:top-64">
+          <div class="grid gap-8">
+            <div style="background-image: url('https://source.unsplash.com/random/4?outdoors,gym,basketball')" class="w-64 h-64 bg-cover bg-center"></div>
+            <div style="background-image: url('https://source.unsplash.com/random/5?outdoors,gym,basketball')" class="w-64 h-96 bg-cover bg-center"></div>
+          </div>
+
+          <div class="grid gap-8">
+            <div style="background-image: url('https://source.unsplash.com/random/6?outdoors,gym,basketball')" class="w-64 h-96 bg-cover bg-center"></div>
+            <div style="background-image: url('https://source.unsplash.com/random/7?outdoors,gym,basketball')" class="w-64 h-64 bg-cover bg-center"></div>
+          </div>
+        </div>
+      <% end %>
+    </nav>
   </div>
 
-  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-    <div class="">
-      <h3 class="text-lg font-semibold mb-2 text-neutral-900">Нотатки</h3>
-      <p class="text-neutral-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, iure!</p>
-    </div>
+  <h1 class="text-2xl md:text-5xl lg:text-9xl xl:text-15xl text-yellow-200 font-title font-bold uppercase">Go-Ahead</h1>
 
-    <div class="">
-      <h3 class="text-lg font-semibold mb-2 text-neutral-900">Тренування</h3>
-      <p class="text-neutral-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim.</p>
-    </div>
+  <div class="absolute bottom-0 w-full z-10">
+    <nav class="flex items-center justify-between">
+      <%= link_to root_path, class: 'text-xl font-medium text-yellow-200 duration-200 hover:text-yellow-50 p-8 group' do %>
+        <span>
+          Calendar
+        </span>
 
-    <div class="">
-      <h3 class="text-lg font-semibold mb-2 text-neutral-900">Події</h3>
-      <p class="text-neutral-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, quibusdam?</p>
-    </div>
+        <div class="grid grid-cols-2 gap-8 absolute pointer-events-none left-64 bottom-48 opacity-0 duration-200 group-hover:opacity-80 group-hover:bottom-64">
+          <div class="grid gap-8">
+            <div style="background-image: url('https://source.unsplash.com/random/0?workout,fitness,sport,gym')" class="w-64 h-64 bg-cover bg-center"></div>
+            <div style="background-image: url('https://source.unsplash.com/random/1?workout,fitness,sport,gym')" class="w-64 h-96 bg-cover bg-center"></div>
+          </div>
 
-    <div class="">
-      <h3 class="text-lg font-semibold mb-2 text-neutral-900">Календар</h3>
-      <p class="text-neutral-700">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <div class="grid gap-8">
+            <div style="background-image: url('https://source.unsplash.com/random/2?workout,fitness,sport,gym')" class="w-64 h-96 bg-cover bg-center"></div>
+            <div style="background-image: url('https://source.unsplash.com/random/3?workout,fitness,sport,gym')" class="w-64 h-64 bg-cover bg-center"></div>
+          </div>
+        </div>
+      <% end %>
+      <%= link_to root_path, class: 'text-xl font-medium text-yellow-200 duration-200 hover:text-yellow-50 p-8 group' do %>
+        <span>
+          Achievements
+        </span>
+
+        <div class="grid grid-cols-2 gap-8 absolute pointer-events-none right-64 bottom-48 opacity-0 duration-200 group-hover:opacity-80 group-hover:bottom-64">
+          <div class="grid gap-8">
+            <div style="background-image: url('https://source.unsplash.com/random/4?outdoors,gym,basketball')" class="w-64 h-64 bg-cover bg-center"></div>
+            <div style="background-image: url('https://source.unsplash.com/random/5?outdoors,gym,basketball')" class="w-64 h-96 bg-cover bg-center"></div>
+          </div>
+
+          <div class="grid gap-8">
+            <div style="background-image: url('https://source.unsplash.com/random/6?outdoors,gym,basketball')" class="w-64 h-96 bg-cover bg-center"></div>
+            <div style="background-image: url('https://source.unsplash.com/random/7?outdoors,gym,basketball')" class="w-64 h-64 bg-cover bg-center"></div>
+          </div>
+        </div>
+      <% end %>
+    </nav>
+  </div>
+</section>
+
+<section class="p-8">
+  <div class="">
+    <h4 class="text-xl lg:text-5xl xl:text-7xl text-yellow-200 font-bold leading-snug xl:w-10/12">
+      Unleash your inner beast with Go-Ahead, your one-stop shop for fabulous fitness programs and mingling with fitness enthusiasts!
+    </h4>
+
+    <div class="flex justify-between py-16">
+      <%= link_to root_path do %>
+        <i class="ph-thin ph-facebook-logo text-yellow-200 text-2xl md:text-3xl lg:text-5xl xl:text-6xl"></i>
+      <% end %>
+
+      <%= link_to root_path do %>
+        <i class="ph-thin ph-instagram-logo text-yellow-200 text-2xl md:text-3xl lg:text-5xl xl:text-6xl"></i>
+      <% end %>
+
+      <%= link_to root_path do %>
+        <i class="ph-thin ph-twitter-logo text-yellow-200 text-2xl md:text-3xl lg:text-5xl xl:text-6xl"></i>
+      <% end %>
+
+      <%= link_to root_path do %>
+        <i class="ph-thin ph-github-logo text-yellow-200 text-2xl md:text-3xl lg:text-5xl xl:text-6xl"></i>
+      <% end %>
+
+      <%= link_to root_path do %>
+        <i class="ph-thin ph-youtube-logo text-yellow-200 text-2xl md:text-3xl lg:text-5xl xl:text-6xl"></i>
+      <% end %>
+
+      <%= link_to root_path do %>
+        <i class="ph-thin ph-tiktok-logo text-yellow-200 text-2xl md:text-3xl lg:text-5xl xl:text-6xl"></i>
+      <% end %>
     </div>
   </div>
+</section>
+
+<section class="p-8">
+  <div class="rounded-full border-2 border-yellow-200 text-yellow-200 flex items-center gap-6 p-8 text-xl md:text-3xl font-medium">
+    <i class="ph-thin ph-check"></i>
+    <span>Custom Programs</span>
+  </div>
+
+  <div class="rounded-full border-2 border-yellow-200 text-yellow-200 flex items-center gap-6 p-8 text-xl md:text-3xl font-medium mt-6">
+    <i class="ph-thin ph-check"></i>
+    <span>Location Sharing</span>
+  </div>
+
+  <div class="rounded-full border-2 border-yellow-200 text-yellow-200 flex items-center gap-6 p-8 text-xl md:text-3xl font-medium mt-6">
+    <i class="ph-thin ph-check"></i>
+    <span>Achievements</span>
+  </div>
+</section>
+
+<section class="p-8">
+  <%= link_to root_path, class: "rounded-full bg-yellow-200 text-black flex items-center gap-6 p-8 text-xl md:text-3xl font-medium mt-6 duration-200 hover:bg-black hover:text-yellow-200 group" do %>
+    <span>Join Now</span>
+    <i class="ph-thin ph-arrow-right group-hover:ml-4 duration-200"></i>
+  <% end %>
+
+  <%= link_to root_path, class: "rounded-full border-2 border-yellow-200 text-yellow-200 flex items-center gap-6 p-8 text-xl md:text-3xl font-medium mt-6 group duration-200" do %>
+    <span>Learn More</span>
+    <i class="ph-thin ph-arrow-right group-hover:ml-4 duration-200"></i>
+  <% end %>
+</section>
+
+<section class="p-8">
+  <h1 class="text-3xl md:text-5xl lg:text-8xl xl:text-10xl text-yellow-200 font-title font-bold uppercase">Get Started</h1>
+
+  <form action="">
+    <input type="text" placeholder="Email" class="rounded-full border-2 border-yellow-200 text-yellow-200 flex items-center gap-6 p-8 text-xl md:text-3xl font-medium mt-6 duration-200 hover:bg-black hover:text-yellow-200 group w-full">
+
+    <button class="rounded-full bg-yellow-200 text-black flex items-center gap-6 p-8 text-xl md:text-3xl font-medium mt-6 duration-200 hover:bg-black hover:text-yellow-200 group w-full">
+      <span>Join Now</span>
+      <i class="ph-thin ph-arrow-right group-hover:ml-4 duration-200"></i>
+    </button>
+  </form>
 </section>

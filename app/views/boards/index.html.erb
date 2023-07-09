@@ -1,50 +1,33 @@
-<section>
-  <div class="flex justify-between items-center mb-20">
-    <h1 class="font-display xl:text-7xl">Your Notes</h1>
+<section class="flex flex-col md:space-x-8 md:flex-row">
+  <%= render partial: "users/shared/sidebar" %>
 
-    <%= link_to "create board", new_board_path, class: "px-6 py-3 bg-neutral-100 text-neutral-700 rounded-md duration-200 hover:bg-neutral-50" %>
-  </div>
+  <div class="w-3/4">
+    <div class="flex justify-between items-center mb-20">
+      <h1 class="font-display md:text-4xl">Your Notes</h1>
 
-  <% if @boards.present? %>
-    <% @boards.each do |board| %>
-      <div class="mb-8">
-        <div class="flex justify-between items-center">
-          <div>
-            <h6 class="font-display text-2xl mb-2"><%= ">> #{board.title}" %></h6>
-            <p class="text-neutral-600 text-xs"><%= board.description %></p>
-          </div>
+      <%= link_to "create board", new_board_path, class: "px-6 py-3 bg-neutral-100 text-neutral-700 rounded-md duration-200 hover:bg-neutral-50" %>
+    </div>
 
-          <div class="inline-flex space-x-2">
-            <%= link_to "edit", edit_board_path(board), class: "px-4 py-2 text-sm bg-neutral-100 text-neutral-700 rounded-md duration-200 hover:bg-neutral-50" %>
-            <%= link_to "add note", new_board_note_path(board), class: "px-4 py-2 text-sm bg-neutral-100 text-neutral-700 rounded-md duration-200 hover:bg-neutral-50" %>
-            <%= link_to "delete", board_path(board), method: :delete, data: { confirm: "Are you sure?" }, class: "px-4 py-2 text-sm text-red-700 bg-red-200 duration-200 hover:bg-red-100 rounded-md" %>
-          </div>
-        </div>
-
-        <% if board.notes.present? %>
-
-          <% if board.layout == "list" %>
-            <div class="mt-8 grid">
-              <% board.notes.each do |note| %>
-                <%= link_to board_note_path(note.board, note), class: "p-6 border-b border-neutral-100/20 duration-200 hover:border-neutral-100/30" do %>
-
-                  <% if note.categories.present? %>
-                    <div class="inline-flex gap-1 mb-4">
-                      <% note.categories.each do |category| %>
-                        <span class="inline-block bg-neutral-800/50 text-neutral-300 font-medium text-xs uppercase tracking-widest px-2 py-1 mr-2 mb-2"><%= category.name %></span>
-                      <% end %>
-                    </div>
-                  <% end %>
-
-                  <h4 class="font-medium text-2xl"><%= note.title %></h4>
-                  <p class="text-neutral-600 mt-2 text-lg"><%= note.description %></p>
-                <% end %>
-              <% end %>
+    <% if @boards.present? %>
+      <% @boards.each do |board| %>
+        <div class="mb-8">
+          <div class="flex justify-between items-center">
+            <div>
+              <h6 class="font-display text-xl mb-2"><%= ">> #{board.title}" %></h6>
+              <p class="text-neutral-600 text-xs"><%= board.description %></p>
             </div>
-          <% elsif board.layout == "grid" %>
-            <div class="grid grid-cols-2 xl:grid-cols-3 gap-4 mt-8">
+
+            <div class="inline-flex space-x-2">
+              <%= link_to "edit", edit_board_path(board), class: "px-4 py-2 text-sm bg-neutral-100 text-neutral-700 rounded-md duration-200 hover:bg-neutral-50" %>
+              <%= link_to "add note", new_board_note_path(board), class: "px-4 py-2 text-sm bg-neutral-100 text-neutral-700 rounded-md duration-200 hover:bg-neutral-50" %>
+              <%= link_to "delete", board_path(board), method: :delete, data: { confirm: "Are you sure?" }, class: "px-4 py-2 text-sm text-red-700 bg-red-200 duration-200 hover:bg-red-100 rounded-md" %>
+            </div>
+          </div>
+
+          <% if board.notes.present? %>
+            <div class="grid md:grid-cols-2 gap-4 mt-8">
               <% board.notes.each do |note| %>
-                <%= link_to board_note_path(note.board, note), class: "border border-neutral-400 p-6 hover:border-neutral-300 duration-150 cursor-pointer rounded-md" do %>
+                <%= link_to board_note_path(note.board, note), class: "border border-neutral-900 p-6 hover:border-neutral-400 duration-200 cursor-pointer rounded-md" do %>
 
                   <% if note.categories.present? %>
                     <div class="inline-flex gap-1 mb-4">
@@ -59,50 +42,19 @@
                 <% end %>
               <% end %>
             </div>
-          <% elsif board.layout == "kanban" %>
-            <div class="overflow-x-auto">
-              <div class="inline-flex flex-nowrap gap-4 mt-8 h-screen">
-                <% board.decorate.columns.each do |category, notes| %>
-                  <div class="bg-neutral-50 w-96 min-w-96 p-2 rounded-lg">
-                    <h4 class="font-bold text-xs text-center uppercase tracking-widest p-4"><%= category %></h4>
-                    <hr>
-                    <div class="w-full space-y-2">
-
-                      <% if notes.present? %>
-                        <% notes.each do |note| %>
-                          <%= link_to board_note_path(note.board, note), class: "bg-neutral-100 rounded-md p-4 hover:bg-neutral-200/60 duration-150 cursor-pointer w-full block" do %>
-                            <h4 class="font-medium text-lg"><%= note.title %></h4>
-                            <p class="text-neutral-600 mt-2"><%= note.description %></p>
-                          <% end %>
-                        <% end %>
-                      <% else %>
-                        <div class="text-center p-4">
-                          <h5 class="text-xl font-medium mb-2">There is no notes yet</h5>
-                          <p class="text-neutral-600">You can create a note by clicking the button above</p>
-                        </div>
-                      <% end %>
-
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-            </div>
           <% else %>
-            <h1 class="font-bold text-4xl">Unknown layout</h1>
+            <div class="text-center mt-8">
+              <h5 class="text-xl font-medium mb-2">There is no notes yet</h5>
+              <p class="text-neutral-300">You can create a note by clicking the button above</p>
+            </div>
           <% end %>
-
-        <% else %>
-          <div class="text-center mt-8">
-            <h5 class="text-xl font-medium mb-2">There is no notes yet</h5>
-            <p class="text-neutral-300">You can create a note by clicking the button above</p>
-          </div>
-        <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="text-center">
+        <h5 class="text-xl font-medium mb-2">There is no boards yet</h5>
+        <p class="text-neutral-300">You can create a board by clicking the button above</p>
       </div>
     <% end %>
-  <% else %>
-    <div class="text-center">
-      <h5 class="text-xl font-medium mb-2">There is no boards yet</h5>
-      <p class="text-neutral-300">You can create a board by clicking the button above</p>
-    </div>
-  <% end %>
+  </div>
 </section>

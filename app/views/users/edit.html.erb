@@ -1,14 +1,13 @@
-<section class="flex my-12 xl:mb-32">
-  <aside class="w-full xl:w-1/4 p-4 md:p-0">
-    <%= link_to "Boards", boards_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-600" %>
-    <%= link_to "Events Feed", root_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-600" %>
-    <%= link_to "Program Suggestions", programs_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-600" %>
-    <%= link_to "My Programs", root_path, class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-600" %>
-    <%= link_to "Profile", user_path(@user), class: "lg:text-2xl block lowercase duration-200 hover:text-neutral-600" %>
-  </aside>
+<%= image_tag "patterns/001.png", alt: "pattern", class: "absolute -left-96 top-0" %>
+<%= image_tag "patterns/001.png", alt: "pattern", class: "absolute -right-96 bottom-0" %>
+
+<section class="flex">
+  <%= render partial: "users/shared/sidebar" %>
 
   <div class="w-2/4">
     <%= form_for @user, html: {  }  do |f| %>
+      <h1 class="font-display md:text-4xl mb-4 md:mb-8">Редагувати профіль</h1>
+
       <div class="flex items-center mb-12 w-full">
         <div class="rounded-full w-24 h-24 aspect-square bg-neutral-200"></div>
 
