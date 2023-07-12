@@ -1,7 +1,7 @@
 <section class="p-8 h-screen flex items-center justify-center">
   <div class="absolute top-0 w-full z-10">
     <nav class="flex items-center justify-between">
-      <%= link_to root_path, class: 'text-xl font-medium text-yellow-200 duration-200 hover:text-yellow-50 p-8 group' do %>
+      <%= link_to user_path(current_user), class: 'text-xl font-medium text-yellow-200 duration-200 hover:text-yellow-50 p-8 group' do %>
         <span>
           Workouts
         </span>
@@ -18,7 +18,7 @@
           </div>
         </div>
       <% end %>
-      <%= link_to root_path, class: 'text-xl font-medium text-yellow-200 duration-200 hover:text-yellow-50 p-8 group' do %>
+      <%= link_to user_path(current_user), class: 'text-xl font-medium text-yellow-200 duration-200 hover:text-yellow-50 p-8 group' do %>
         <span>
           Location
         </span>
@@ -42,7 +42,7 @@
 
   <div class="absolute bottom-0 w-full z-10">
     <nav class="flex items-center justify-between">
-      <%= link_to root_path, class: 'text-xl font-medium text-yellow-200 duration-200 hover:text-yellow-50 p-8 group' do %>
+      <%= link_to user_path(current_user), class: 'text-xl font-medium text-yellow-200 duration-200 hover:text-yellow-50 p-8 group' do %>
         <span>
           Calendar
         </span>
@@ -59,7 +59,7 @@
           </div>
         </div>
       <% end %>
-      <%= link_to root_path, class: 'text-xl font-medium text-yellow-200 duration-200 hover:text-yellow-50 p-8 group' do %>
+      <%= link_to user_path(current_user), class: 'text-xl font-medium text-yellow-200 duration-200 hover:text-yellow-50 p-8 group' do %>
         <span>
           Achievements
         </span>
@@ -132,7 +132,7 @@
 </section>
 
 <section class="p-8">
-  <%= link_to root_path, class: "rounded-full bg-yellow-200 text-black flex items-center gap-6 p-8 text-xl md:text-3xl font-medium mt-6 duration-200 hover:bg-black hover:text-yellow-200 group" do %>
+  <%= link_to user_session_path, class: "rounded-full bg-yellow-200 text-black flex items-center gap-6 p-8 text-xl md:text-3xl font-medium mt-6 duration-200 hover:bg-black hover:text-yellow-200 group" do %>
     <span>Join Now</span>
     <i class="ph-thin ph-arrow-right group-hover:ml-4 duration-200"></i>
   <% end %>
