@@ -15,7 +15,9 @@
   </head>
 
   <body class="bg-black">
-    <%= render "shared/header" %>
+    <% unless "#{controller_name}_#{action_name}" == 'static_pages_home' %>
+      <%= render "shared/header" %>
+    <% end %>
 
     <main>
       <%= yield %>

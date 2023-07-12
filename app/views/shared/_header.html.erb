@@ -1,0 +1,14 @@
+<header class="p-8">
+  <nav class="flex items-center justify-between">
+    <div class=""></div>
+
+    <div class="flex gap-8 items-center">
+      <%# sign out %>
+      <% if current_user %>
+        <%= link_to destroy_user_session_path, method: :delete, class: "text-yellow-200 hover:text-yellow-300" do %>
+          Sign Out
+        <% end %>
+      <% end %>
+    </div>
+  </nav>
+</header>
