@@ -55,4 +55,8 @@ class User < ApplicationRecord
     self.confirmed_at = Time.now
     save
   end
+
+  def super_admin?
+    is_admin
+  end
 end

@@ -2,6 +2,24 @@
 
 # Routes for the application
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :actions
+    resources :activities
+    resources :boards
+    resources :categories
+    resources :challenges
+    resources :enrolled_programs
+    resources :events
+    resources :exercises
+    resources :invites
+    resources :notes
+    resources :programs
+    resources :progresses
+    resources :users
+
+    root to: 'users#index'
+  end
+
   resources :progresses
   resources :exercises
   resources :activities

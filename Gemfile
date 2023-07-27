@@ -5,6 +5,7 @@ ruby '3.1.2'
 
 gem 'rails', github: 'rails/rails', branch: 'main'
 
+gem 'administrate'
 gem 'cssbundling-rails'
 gem 'devise'
 gem 'draper'
