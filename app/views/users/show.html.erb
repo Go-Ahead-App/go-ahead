@@ -1,16 +1,16 @@
-<section class="flex flex-col md:space-x-8 md:flex-row">
+<section class="flex flex-col md:space-x-8 md:flex-row p-8 text-white">
   <%= render partial: "users/shared/sidebar" %>
 
   <div class="xl:w-2/4 z-10">
-    <h1 class="font-display xl:text-7xl mb-4 md:mb-8"><%= "#{@user.name}, Welcome Back!" %></h1>
+    <h1 class="font-title font-bold xl:text-7xl mb-4 md:mb-8"><%= "#{@user.name}, Welcome Back!" %></h1>
 
     <div class="flex items-center mb-4 md:mb-12">
       <div class="rounded-full w-16 h-16 md:w-24 md:h-24 aspect-square bg-neutral-200"></div>
 
       <div class="ml-4">
-        <h2 class="text-sm text-neutral-600"><%= "@#{@user.username}" %></h2>
-        <h1 class="text-xl font-medium text-neutral-900"><%= @user.name %></h1>
-        <p class="text-xs text-neutral-700"><%= @user.email %></p>
+        <h2 class="text-sm text-yellow-200"><%= "@#{@user.username}" %></h2>
+        <h1 class="text-xl font-medium text-neutral-200"><%= @user.name %></h1>
+        <p class="text-xs text-neutral-400"><%= @user.email %></p>
       </div>
     </div>
 
@@ -18,12 +18,12 @@
   </div>
 
   <div class="xl:w-1/4 mt-8 md:mt-0 z-10">
-    <div class="flex items-center space-x-4 p-4 rounded-md border border-neutral-900">
+    <div class="flex items-center space-x-4 p-4 rounded-md border border-neutral-400">
       <i class="ph ph-trophy-light text-3xl"></i>
 
       <div>
         <h6 class="font-medium text-lg">Reminder</h6>
-        <p class="text-sm text-neutral-600">You have 3 programs to review</p>
+        <p class="text-sm text-neutral-200">You have 3 programs to review</p>
       </div>
     </div>
   </div>
@@ -47,9 +47,9 @@
       </div>
     <% end %>
   <% else %>
-    <div class="text-center mt-32 md:w-96">
-      <h5 class="text-3xl font-medium mb-4">Empty</h5>
-      <p class="text-neutral-600 text-xl">You can create a note in the boards page</p>
+    <div class="mt-32 xl:w-2/4 p-8">
+      <h5 class="text-6xl text-yellow-200 font-bold font-title mb-4">Empty</h5>
+      <p class="text-neutral-400 text-3xl">You can create a note in the boards page</p>
     </div>
   <% end %>
 </section>
